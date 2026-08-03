@@ -159,6 +159,10 @@ spec:
               value: {{ $val | quote }}
             {{- end }}
             {{- end }}
+          {{- with .Values.wso2.deployment.envFrom }}
+          envFrom:
+            {{- toYaml . | nindent 12 }}
+          {{- end }}
           volumeMounts:
             - name: wso2mi-toml
               mountPath: /home/wso2carbon/wso2-config-volume/conf/deployment.toml

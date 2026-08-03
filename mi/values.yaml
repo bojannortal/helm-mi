@@ -286,6 +286,9 @@ wso2:
     envs:
     # wso2_oh_sample_baseUrl: "http://localhost:8290/services/odata"
 
+    # -- (list) envFrom sources (secretRef/configMapRef) for the MI container
+    envFrom:
+
     # Configure synapse testing
     synapseTest:
       # -- Enable/Disable synapse testing
