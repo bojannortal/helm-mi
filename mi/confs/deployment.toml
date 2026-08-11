@@ -282,6 +282,30 @@ heartbeat_interval = {{ .Values.wso2.config.icp.heartbeatInterval }}
 {{- end }}
 {{- end }}
 
+{{ if and .Values.wso2.config.icp .Values.wso2.config.icp.url }}
+[dashboard_config]
+dashboard_url = {{ .Values.wso2.config.icp.url | quote }}
+{{- if .Values.wso2.config.icp.heartbeatInterval }}
+heartbeat_interval = {{ .Values.wso2.config.icp.heartbeatInterval }}
+{{- end }}
+{{- if .Values.wso2.config.icp.groupId }}
+group_id = {{ .Values.wso2.config.icp.groupId | quote }}
+{{- else }}
+group_id = {{ .Release.Name | quote }}
+{{- end }}
+{{- if .Values.wso2.config.icp.nodeId }}
+node_id = {{ .Values.wso2.config.icp.nodeId | quote }}
+{{- else }}
+node_id = "$env{POD_NAME}"
+{{- end }}
+{{- if .Values.wso2.config.icp.managementHostname }}
+management_hostname = {{ .Values.wso2.config.icp.managementHostname | quote }}
+{{- end }}
+{{- if .Values.wso2.config.icp.managementPort }}
+management_port = {{ .Values.wso2.config.icp.managementPort }}
+{{- end }}
+{{- end }}
+
 {{ if .Values.wso2.config.serviceCatalog }}
 [[service_catalog]]
 apim_host = {{ .Values.wso2.config.serviceCatalog.apimHost | quote }}
