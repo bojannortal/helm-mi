@@ -184,6 +184,9 @@ enable = true
 client_id = {{ .Values.wso2.config.sso.clientId | quote }}
 base_url = {{ .Values.wso2.config.sso.baseUrl | quote }}
 jwt_issuer = {{ .Values.wso2.config.sso.jwtIssuer | quote }}
+{{- if .Values.wso2.config.sso.wellKnownEndpoint }}
+well_known_endpoint = {{ .Values.wso2.config.sso.wellKnownEndpoint | quote }}
+{{- end }}
 resource_server_URLs = [
     {{- range .Values.wso2.config.sso.resourceServerURLs }}
     "{{ . }}",
