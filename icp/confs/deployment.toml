@@ -193,6 +193,9 @@ resource_server_URLs = [
     {{- end }}
 ]
 sign_in_redirect_URL = {{ .Values.wso2.config.sso.signInRedirectUrl | quote }}
+{{- if .Values.wso2.config.sso.signOutRedirectUrl }}
+sign_out_redirect_URL = {{ .Values.wso2.config.sso.signOutRedirectUrl | quote }}
+{{- end }}
 admin_group_attribute = {{ .Values.wso2.config.sso.adminGroupAttribute | quote }}
 admin_groups = [
     {{- range .Values.wso2.config.sso.adminGroups }}
