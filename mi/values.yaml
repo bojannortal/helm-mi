@@ -148,6 +148,12 @@ wso2:
     secureVault:
       # -- Enable/Disable secure vault
       enabled: false
+    logging:
+      # -- (map) Per-logger level overrides applied to log4j2.properties, keyed by the
+      # logger's log4j2 key (e.g. httpclient-wire-header), not the Java package name.
+      # Only loggers already declared in confs/log4j2.properties can be overridden.
+      # Example: {httpclient-wire-header: DEBUG}
+      levels: {}
     keyStore:
       primary:
         # -- Primary keystore file name
