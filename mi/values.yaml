@@ -199,6 +199,12 @@ wso2:
     BuildVersion: "4.5.0"
     # -- K8s secret name which contains JKS files
     JKSSecretName: ""
+    # -- (list) Extra keystore/truststore file names to mount from JKSSecretName into
+    # repository/resources/security/. Each item must match a key in that secret and is
+    # mounted under the same name. Use for integration-specific stores (e.g. WS-Security
+    # signing keystores) that are not the primary/internal/transport stores above.
+    # Ignored when JKSSecretName is empty.
+    extraKeystores: []
     # -- imagePullSecrets for private docker registry
     imagePullSecrets: ""
     image:

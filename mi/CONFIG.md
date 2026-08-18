@@ -294,6 +294,7 @@ A Helm chart for the deployment of WSO2 Micro Integrator
 | wso2.config.vault.hashicorp.trustStoreFile | string | `nil` | The Trust store that is used for SSL communication with the HashiCorp server |
 | wso2.deployment.BuildVersion | string | `"4.6.0"` | Build version of the Micro Integrator |
 | wso2.deployment.JKSSecretName | string | `""` | K8s secret name which contains JKS files |
+| wso2.deployment.extraKeystores | list | `[]` | Extra keystore/truststore file names to mount from JKSSecretName into repository/resources/security/. Each item must match a key in that secret and is mounted under the same name. Ignored when JKSSecretName is empty. |
 | wso2.deployment.cmdArgs | string | `nil` | List of Command line arguments passed to startup script |
 | wso2.deployment.configMaps | object | `{"entryPoint":{"defaultMode":"0407"}}` | Set UNIX permissions over the startup scripts |
 | wso2.deployment.envs | list | `nil` | Environment variables for the Micro integrator deployment |

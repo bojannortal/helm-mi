@@ -211,6 +211,14 @@ spec:
               mountPath: /home/wso2carbon/wso2mi-{{ .Values.wso2.deployment.BuildVersion }}/repository/resources/security/{{ .Values.wso2.config.transport.http.nonBlocking.sender.truststore.fileName }}
               subPath: {{ .Values.wso2.config.trustStore.transport.sender.fileName }}
             {{- end }}
+              # Additional keystores/truststores (e.g. integration-specific WS-Security
+              # stores). Each entry is a key in the JKSSecretName secret and is mounted
+              # by that same name into the security directory.
+            {{- range .Values.wso2.deployment.extraKeystores }}
+            - name: keystores
+              mountPath: /home/wso2carbon/wso2mi-{{ $.Values.wso2.deployment.BuildVersion }}/repository/resources/security/{{ . }}
+              subPath: {{ . }}
+            {{- end }}
             {{- end }}
             {{- if .Values.wso2.config.secureVault.enabled }}
             - name: wso2mi-secrets-volume
